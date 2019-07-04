@@ -1,14 +1,5 @@
 include("ImportsManager.jl")
 
-function generate_rand_portfolio(nb_components=20, fixed_weights=false, allow_short=false)
-    returns = [generate_rand_returns(10000) for i in 1:nb_components];
-    init_weights = generate_rand_weights(nb_components, allow_short);
-
-    return compute_portfolio_returns(init_weights, returns, fixed_weights)
-end
-# pf = compute_portfolio_returns(init_weights, returns, fixed_weights)
-# compute_cum_pnl(
-
 WEIGHTINGS = ["EQUAL_WEIGHTS", "METRIC_WEIGHTS", "EQUAL_EXPOSURE_METRIC"]
 
 function generate_portfolio_from_returns(returns::Array{Array{Float64,1 }, 1}, metrics::Array{Float64, 1}, fixed_weights::Bool, weighting_scheme::String)
@@ -53,3 +44,11 @@ function compute_portfolio_returns(initial_weights::Array{Float64, 1},
     return returns_to_prices(out_returns), out_returns, weights
 end
 
+
+
+function generate_rand_portfolio(nb_components=20, fixed_weights=false)
+    returns = [generate_rand_returns(10000) for i in 1:nb_components];
+    init_weights = generate_rand_weights(nb_components);
+
+    return compute_portfolio_returns(init_weights, returns, fixed_weights)
+end
