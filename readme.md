@@ -35,3 +35,8 @@ prices, returns, weights = generate_portfolio_from_returns(
 
 The function generate_portfolio_from_prices can also be used by replacing the returns input by series of prices.
 
+Outputs:
+- Prices Array{Float64, 1}
+- Returns Array{Float64, 1}
+- Weights Array{Array{Float64, 1}, 1}
+ 
